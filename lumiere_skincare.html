@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lumière Skincare — beleza real, cuidado todos os dias.">
+  <title>Lumière Skincare | Cuidado que revela sua beleza</title>
+  <style>
+    :root{--green:#203d30;--green2:#354e38;--cream:#f7f3ec;--sage:#e8ebdf;--ink:#24352e;--muted:#66736a;--white:#fff;--line:#e2e3d9}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6}
+    a{color:inherit;text-decoration:none}img{display:block;max-width:100%;object-fit:cover}button,input{font:inherit}
+    .container{width:min(1160px,calc(100% - 40px));margin:auto}
+    header{background:rgba(250,248,243,.96);border-bottom:1px solid #e9e5dc;position:sticky;top:0;z-index:10}
+    .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;font-size:20px;letter-spacing:.22em;font-weight:500;white-space:nowrap}
+    .brand-mark{font-size:30px;letter-spacing:0;color:var(--green)}.brand small{display:block;font-size:9px;text-align:center;letter-spacing:.35em}
+    .nav-links{display:flex;gap:25px;font-size:13px}.nav-links a:hover{color:#6e805e}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 21px;background:var(--green2);color:#fff;border:0;border-radius:30px;font-size:13px;cursor:pointer;transition:transform .2s,background .2s}
+    .btn:hover{background:var(--green);transform:translateY(-1px)}
+    .menu-toggle{display:none;border:0;background:none;font-size:25px;color:var(--green);cursor:pointer}
+    .hero{min-height:460px;display:grid;grid-template-columns: .9fr 1.1fr;align-items:center;overflow:hidden;background:#eee5d8}
+    .hero-copy{padding:55px max(30px,calc((100vw - 1160px)/2));padding-right:25px;z-index:1}
+    .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#778269;font-weight:700}
+    h1,h2,h3,p{margin-top:0}h1,h2{font-family:Georgia,'Times New Roman',serif;font-weight:400;line-height:1.08}
+    h1{font-size:clamp(40px,5vw,65px);margin:12px 0 16px;letter-spacing:-.035em}h2{font-size:clamp(30px,3.3vw,43px);margin:9px 0 16px}
+    .hero-copy p{max-width:410px;font-size:15px;margin-bottom:23px}
+    .hero-photo{height:460px;position:relative;background:#ddd}
+    .hero-photo img{width:100%;height:100%;object-position:center 40%}
+    .hero-note{position:absolute;right:8%;top:30%;font-family:cursive;font-size:clamp(19px,2.4vw,30px);color:var(--green);transform:rotate(-8deg);text-align:center}
+    .benefits{display:grid;grid-template-columns:repeat(5,1fr);padding:23px 0;background:#fbfaf6}
+    .benefit{text-align:center;padding:4px 14px;border-right:1px solid var(--line);font-size:13px}.benefit:last-child{border:0}
+    .benefit span{display:block;font-size:27px;margin-bottom:6px;color:var(--green)}
+    .about{display:grid;grid-template-columns:1fr 1fr;align-items:center;background:#fbfaf6}
+    .about-image{height:390px}.about-image img{width:100%;height:100%}
+    .about-copy{padding:55px clamp(30px,6vw,85px)}.about-copy p{font-size:14px;color:#536158}
+    .services{background:var(--sage);padding:62px 0}
+    .service-layout{display:grid;grid-template-columns:.9fr 1.6fr;gap:38px;align-items:center}
+    .service-intro p{font-size:14px;color:#536158;max-width:330px}
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+    .service-card{background:rgba(255,255,255,.78);padding:23px 15px 20px;border-radius:10px;text-align:center}
+    .service-icon{width:58px;height:58px;border-radius:50%;background:#dce2d2;margin:0 auto 13px;display:grid;place-items:center;font-size:26px}
+    .service-card h3{font-size:14px;margin-bottom:9px}.service-card p{font-size:12px;color:#657067;margin-bottom:0}
+    .products{padding:60px 0;background:#faf8f3}
+    .product-layout{display:grid;grid-template-columns:1fr 1fr .85fr;gap:35px;align-items:center}
+    .product-image{height:260px;border-radius:9px;overflow:hidden}.product-image img{width:100%;height:100%}
+    .product-copy p{font-size:14px;color:#536158}
+    .product-points{border-left:1px solid var(--line);padding-left:28px;display:grid;gap:16px}
+    .point{display:flex;gap:12px;align-items:center;font-size:13px}.point span{font-size:22px;background:#e9ebdf;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;flex-shrink:0}
+    .testimonials{padding:55px 0;background:#fffdf9;text-align:center}.testimonials .sub{font-size:13px;color:var(--muted)}
+    .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:27px;text-align:left}
+    .quote{border:1px solid #eeece5;background:#fff;border-radius:12px;padding:22px;box-shadow:0 5px 20px #24352e08}
+    .quote p{font-size:13px;color:#536158}.quote strong{font-size:12px}.stars{color:var(--green2);letter-spacing:2px}
+    .newsletter{background:var(--green);color:white;padding:28px 0;position:relative;overflow:hidden}
+    .newsletter-inner{display:flex;align-items:center;justify-content:space-between;gap:25px}.newsletter h3{font-family:Georgia,serif;font-size:23px;font-weight:400;margin-bottom:3px}.newsletter p{font-size:12px;margin:0;color:#e0e6dd}
+    .signup{display:flex;max-width:450px;width:100%;background:white;border-radius:30px;padding:4px}.signup input{min-width:0;flex:1;border:0;outline:0;padding:9px 14px;border-radius:30px;font-size:12px}.signup button{white-space:nowrap}
+    footer{background:#172c23;color:#e9eee8;padding:35px 0 20px}.footer-top{display:flex;justify-content:space-between;align-items:center;gap:25px}.footer-links{display:flex;gap:20px;font-size:12px;flex-wrap:wrap}.social{display:flex;gap:14px;font-size:18px}.copyright{text-align:right;font-size:10px;color:#b8c3b9;margin-top:23px}
+    @media(max-width:900px){.nav-links{gap:14px}.nav-cta{display:none}.hero{grid-template-columns:1fr 1fr}.hero-copy{padding:35px 25px}.hero-photo{height:420px}.service-layout{grid-template-columns:1fr}.cards{grid-template-columns:repeat(4,1fr)}.product-layout{grid-template-columns:1fr 1fr}.product-points{grid-column:1/-1;border-left:0;border-top:1px solid var(--line);padding:20px 0 0;grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:650px){.container{width:min(100% - 30px,500px)}.nav{min-height:68px}.brand{font-size:17px}.menu-toggle{display:block}.nav-links{display:none;position:absolute;top:68px;left:0;right:0;background:#faf8f3;padding:20px;flex-direction:column;gap:15px;border-bottom:1px solid var(--line)}.nav-links.open{display:flex}.hero{grid-template-columns:1fr}.hero-copy{padding:42px 24px 30px}.hero-photo{height:300px}.hero-note{right:7%;top:12%;font-size:22px}.benefits{grid-template-columns:repeat(2,1fr);gap:0;padding:10px 0}.benefit{padding:15px 8px;border-right:0;border-bottom:1px solid var(--line)}.benefit:last-child{grid-column:1/-1;border-bottom:0}.about{grid-template-columns:1fr}.about-image{height:280px}.about-copy{padding:38px 24px}.services,.products{padding:42px 0}.cards{grid-template-columns:repeat(2,1fr)}.service-card{padding:19px 12px}.product-layout{grid-template-columns:1fr;gap:22px}.product-image{height:260px}.product-points{grid-column:auto;grid-template-columns:1fr 1fr}.quotes{grid-template-columns:1fr}.testimonials{padding:42px 0}.newsletter-inner{align-items:flex-start;flex-direction:column}.signup{max-width:none}.footer-top{align-items:flex-start;flex-direction:column}.footer-links{gap:13px}.copyright{text-align:left}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#inicio" aria-label="Lumière Skincare início"><span class="brand-mark">♧</span><span>LUMIÈRE<small>SKINCARE</small></span></a>
+    <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" id="menuToggle">☰</button>
+    <nav class="nav-links" id="navLinks" aria-label="Navegação principal">
+      <a href="#inicio">Início</a><a href="#sobre">Sobre</a><a href="#servicos">Serviços</a><a href="#produtos">Produtos</a><a href="#depoimentos">Depoimentos</a><a href="#contato">Contato</a>
+    </nav>
+    <a class="btn nav-cta" href="#contato">Agende sua avaliação</a>
+  </div>
+</header>
+<main>
+  <section class="hero" id="inicio">
+    <div class="hero-copy">
+      <div class="eyebrow">Sua pele, nossa prioridade</div>
+      <h1>Beleza real<br>é cuidado todos<br>os dias</h1>
+      <p>Na Lumière Skincare, unimos ciência, natureza e bem-estar para revelar o melhor da sua pele. Tratamentos personalizados para cada fase da sua vida.</p>
+      <a class="btn" href="#servicos">Conheça nossos serviços <span>→</span></a>
+    </div>
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=1200&q=85" alt="Mulher com pele saudável em momento de autocuidado">
+      <div class="hero-note">Naturalmente<br>mais bonita ♡</div>
+    </div>
+  </section>
+  <section class="container benefits" aria-label="Nossos diferenciais">
+    <div class="benefit"><span>♧</span>Produtos de<br>alta qualidade</div>
+    <div class="benefit"><span>⚗</span>Tecnologia e<br>ciência</div>
+    <div class="benefit"><span>♡</span>Atendimento<br>personalizado</div>
+    <div class="benefit"><span>❀</span>Bem-estar<br>e autoestima</div>
+    <div class="benefit"><span>♢</span>Segurança e<br>resultados reais</div>
+  </section>
+  <section class="about" id="sobre">
+    <div class="about-image"><img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=1000&q=85" alt="Produtos de skincare em uma composição natural"></div>
+    <div class="about-copy">
+      <div class="eyebrow">Sobre a Lumière</div>
+      <h2>Mais que skincare,<br>é um estilo de vida</h2>
+      <p>A Lumière Skincare nasceu da paixão por cuidar de pessoas e da crença de que uma pele saudável transforma não apenas a aparência, mas também a forma como você se sente.</p>
+      <p>Aqui, cada detalhe é pensado para proporcionar uma experiência única, com foco na sua saúde, beleza e bem-estar.</p>
+      <a class="btn" href="#contato">Saiba mais sobre nós →</a>
+    </div>
+  </section>
+  <section class="services" id="servicos">
+    <div class="container service-layout">
+      <div class="service-intro">
+        <div class="eyebrow">Nossos serviços</div>
+        <h2>Tratamentos faciais<br>personalizados</h2>
+        <p>Cada pele é única. Por isso, oferecemos protocolos sob medida para atender às suas necessidades específicas e realçar sua beleza natural.</p>
+        <a class="btn" href="#contato">Conheça todos os serviços →</a>
+      </div>
+      <div class="cards">
+        <article class="service-card"><div class="service-icon">✧</div><h3>Limpeza de pele</h3><p>Remove impurezas, desobstrui poros e renova a pele.</p></article>
+        <article class="service-card"><div class="service-icon">♧</div><h3>Hidratação profunda</h3><p>Recupera o viço, maciez e elasticidade da pele.</p></article>
+        <article class="service-card"><div class="service-icon">☺</div><h3>Tratamento antiacne</h3><p>Ajuda a controlar a oleosidade e cuidar das lesões.</p></article>
+        <article class="service-card"><div class="service-icon">❀</div><h3>Rejuvenescimento</h3><p>Cuidados para uma pele com aparência mais uniforme.</p></article>
+      </div>
+    </div>
+  </section>
+  <section class="products" id="produtos">
+    <div class="container product-layout">
+      <div class="product-image"><img src="https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=900&q=85" alt="Linha de produtos para cuidados com a pele"></div>
+      <div class="product-copy">
+        <div class="eyebrow">Produtos</div>
+        <h2>Cuide da sua pele em qualquer momento</h2>
+        <p>Conheça uma rotina de cuidados desenvolvida para acompanhar você, com fórmulas pensadas para uma pele saudável, radiante e protegida.</p>
+        <a class="btn" href="#contato">Ver produtos →</a>
+      </div>
+      <div class="product-points">
+        <div class="point"><span>♧</span>Ingredientes selecionados</div>
+        <div class="point"><span>♢</span>Qualidade e cuidado em cada detalhe</div>
+        <div class="point"><span>◎</span>Uma rotina simples e prática</div>
+        <div class="point"><span>♡</span>Opções para diferentes necessidades</div>
+      </div>
+    </div>
+  </section>
+  <section class="testimonials" id="depoimentos">
+    <div class="container">
+      <div class="eyebrow">Depoimentos</div>
+      <h2>Quem cuida da pele, recomenda</h2>
+      <p class="sub">Veja o que nossas clientes dizem sobre a experiência Lumière Skincare.</p>
+      <div class="quotes">
+        <article class="quote"><p>“Minha pele nunca esteve tão bonita! O atendimento é incrível e os resultados apareceram com uma rotina consistente.”</p><strong>Juliana Souza</strong><div class="stars" aria-label="5 de 5 estrelas">★★★★★</div></article>
+        <article class="quote"><p>“Ambiente acolhedor, profissionais atenciosos e um cuidado que faz toda a diferença!”</p><strong>Camila Ferreira</strong><div class="stars" aria-label="5 de 5 estrelas">★★★★★</div></article>
+        <article class="quote"><p>“Adorei conhecer os produtos e receber orientações para cuidar melhor da minha pele.”</p><strong>Larissa Mendes</strong><div class="stars" aria-label="5 de 5 estrelas">★★★★★</div></article>
+      </div>
+    </div>
+  </section>
+  <section class="newsletter" id="contato">
+    <div class="container newsletter-inner">
+      <div><h3>Fique por dentro das novidades</h3><p>Receba dicas de cuidados com a pele, lançamentos e novidades especiais.</p></div>
+      <form class="signup" id="newsletterForm"><input type="email" id="email" placeholder="Seu melhor e-mail" aria-label="Seu melhor e-mail" required><button class="btn" type="submit">Inscrever-se</button></form>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <a class="brand" href="#inicio"><span class="brand-mark" style="color:#e9eee8">♧</span><span>LUMIÈRE<small>SKINCARE</small></span></a>
+      <nav class="footer-links" aria-label="Links do rodapé"><a href="#inicio">Início</a><a href="#sobre">Sobre</a><a href="#servicos">Serviços</a><a href="#produtos">Produtos</a><a href="#depoimentos">Depoimentos</a><a href="#contato">Contato</a></nav>
+      <div class="social"><a href="#contato" aria-label="Instagram">◎</a><a href="#contato" aria-label="Facebook">f</a><a href="#contato" aria-label="WhatsApp">◉</a></div>
+    </div>
+    <div class="copyright">© 2026 Lumière Skincare. Todos os direitos reservados.</div>
+  </div>
+</footer>
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.textContent = open ? '×' : '☰';
+  });
+  navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.textContent = '☰';
+  }));
+  document.getElementById('newsletterForm').addEventListener('submit', event => {
+    event.preventDefault();
+    alert('Obrigado pelo interesse! O formulário é demonstrativo e ainda não está conectado a uma lista de e-mails.');
+    event.target.reset();
+  });
+</script>
+</body>
+</html>
